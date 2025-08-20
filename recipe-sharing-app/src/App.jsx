@@ -6,6 +6,8 @@ import './App.css'
 import RecipeDetails from './components/RecipeDetails';
 import AddRecipeForm from './components/AddRecipeForm';
 import { useRecipeStore } from './components/recipeStore';
+import SearchBar from './components/SearchBar';
+import RecipeList from './components/RecipeList';
 
 
 //use 
@@ -15,17 +17,8 @@ function Home() {
     <div>
       <h1>Recipe Sharing App</h1>
       <AddRecipeForm />
-      {/* Replace this simple list with your existing <RecipeList /> if you have it */}
-      <div>
-        {recipes.map((r) => (
-          <div key={r.id}>
-            <h3>
-              <Link to={`/recipes/${r.id}`}>{r.title}</Link>
-            </h3>
-            <p>{r.description}</p>
-          </div>
-        ))}
-      </div>
+      <SearchBar />
+      <RecipeList />
     </div>
   );
 }
@@ -58,6 +51,13 @@ function App() {
         </div>
         <p className="read-the-docs">
           Click on the Vite and React logos to learn more
+        </p>
+      </div>
+    </BrowserRouter>
+  )
+}
+
+export default App
         </p>
       </div>
     </BrowserRouter>
