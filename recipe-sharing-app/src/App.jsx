@@ -8,6 +8,8 @@ import AddRecipeForm from './components/AddRecipeForm';
 import { useRecipeStore } from './components/recipeStore';
 import SearchBar from './components/SearchBar';
 import RecipeList from './components/RecipeList';
+import FavoritesList from './components/FavoritesList';
+import RecommendationsList from './components/RecommendationsList';
 
 
 //use 
@@ -40,6 +42,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/recipes/:id" element={<RecipeDetails />} />
+          <Route path="/favorites" element={<FavoritesList />} />
+          <Route path="/recommendations" element={<RecommendationsList />} />
         </Routes>
         <div className="card">
           <button onClick={() => setCount((count) => count + 1)}>
@@ -58,10 +62,6 @@ function App() {
 }
 
 export default App
-        </p>
-      </div>
-    </BrowserRouter>
-  )
 }
 
 export default App

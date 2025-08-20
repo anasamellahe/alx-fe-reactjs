@@ -7,12 +7,23 @@ const RecipeList = () => {
   const filteredRecipes = useRecipeStore((state) => state.filteredRecipes);
   const searchTerm = useRecipeStore((state) => state.searchTerm);
   const filterRecipes = useRecipeStore((state) => state.filterRecipes);
+  const favorites = useRecipeStore((state) => state.favorites);
+  const addFavorite = useRecipeStore((state) => state.addFavorite);
+  const removeFavorite = useRecipeStore((state) => state.removeFavorite);
 
   useEffect(() => {
     filterRecipes();
   }, [recipes, filterRecipes]);
 
   const displayRecipes = searchTerm ? filteredRecipes : recipes;
+
+  const toggleFavorite = (recipeId) => {
+    if (favorites.includes(recipeId)) {
+      removeFavorite(recipeId);
+    } else {
+      addFavorite(recipeId);
+    }
+  };
 
   return (
     <div>
@@ -22,6 +33,9 @@ const RecipeList = () => {
             <Link to={`/recipes/${recipe.id}`}>{recipe.title}</Link>
           </h3>
           <p>{recipe.description}</p>
+          <button onClick={() => toggleFavorite(recipe.id)}>
+            {favorites.includes(recipe.id) ? 'Remove from Favorites' : 'Add to Favorites'}
+          </button>
         </div>
       ))}
     </div>
