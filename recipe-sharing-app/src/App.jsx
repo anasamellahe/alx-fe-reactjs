@@ -7,6 +7,8 @@ import RecipeDetails from './components/RecipeDetails';
 import AddRecipeForm from './components/AddRecipeForm';
 import { useRecipeStore } from './components/recipeStore';
 
+
+//use 
 function Home() {
   const recipes = useRecipeStore((s) => s.recipes);
   return (
